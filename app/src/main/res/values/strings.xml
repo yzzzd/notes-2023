@@ -7,4 +7,6 @@
     <string name="label_grid_subtitle">Every big step start with small step. Notes your first idea and start your journey!</string>
     <string name="hint_title">Title</string>
     <string name="hint_content">Write your journey</string>
+    <string name="btn_edit">Edit</string>
+    <string name="btn_save">Save</string>
 </resources>

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
+    app:cardUseCompatPadding="true"
     app:cardCornerRadius="8dp">
 
     <LinearLayout
@@ -19,6 +20,7 @@
             android:padding="12sp">
 
             <TextView
+                android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -28,6 +30,7 @@
                 tools:text="Create First Android App" />
 
             <TextView
+                android:id="@+id/tv_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16sp"
@@ -40,6 +43,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?colorSurfaceDim"

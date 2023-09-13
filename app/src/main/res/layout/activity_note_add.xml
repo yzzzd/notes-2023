@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".NoteAddActivity">
+    tools:context=".ui.add.NoteAddActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
@@ -24,7 +24,7 @@
         android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
         android:hint="@string/hint_title"
-        android:inputType="textCapWords"
+        android:inputType="textCapWords|textMultiLine"
         android:paddingHorizontal="16dp"
         android:textColor="?colorOnSurface"
         android:textSize="32sp"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:hint="@string/hint_content"
-        android:inputType="textCapSentences"
+        android:inputType="textCapSentences|textMultiLine"
         android:padding="16dp"
         android:textColor="?colorOnSurface"
         android:textSize="16sp" />
