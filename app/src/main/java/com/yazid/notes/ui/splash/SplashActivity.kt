@@ -9,15 +9,15 @@ import com.yazid.notes.ui.home.HomeActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_splash)
 
         lifecycleScope.launch {
             delay(2000)
 
-            val homeIntent = Intent(this@MainActivity, HomeActivity::class.java)
+            val homeIntent = Intent(this@SplashActivity, HomeActivity::class.java)
             startActivity(homeIntent)
             finish()
         }
