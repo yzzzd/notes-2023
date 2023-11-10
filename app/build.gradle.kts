@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.dagger.hilt.android")
+    kotlin("kapt")
 }
 
 android {
@@ -29,9 +31,16 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+
+        tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
+            kotlinOptions.jvmTarget = jvmTarget
+        }
     }
     buildFeatures {
         viewBinding = true
+    }
+    kapt {
+        correctErrorTypes
     }
 }
 
@@ -44,6 +53,9 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     implementation("androidx.fragment:fragment-ktx:1.6.1")
+
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
