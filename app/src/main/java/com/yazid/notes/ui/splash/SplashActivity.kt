@@ -15,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         lifecycleScope.launch {
-            delay(2000)
+            delay(3_000)
 
             val homeIntent = Intent(this@SplashActivity, HomeActivity::class.java)
             startActivity(homeIntent)

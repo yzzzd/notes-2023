@@ -24,7 +24,7 @@ class NoteDetailActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        binding.toolbar.setNavigationOnClickListener { onBackPressed() }
+        binding.toolbar.setNavigationOnClickListener { finish() }
 
         title = intent.getStringExtra(TITLE)
         content = intent.getStringExtra(CONTENT)
