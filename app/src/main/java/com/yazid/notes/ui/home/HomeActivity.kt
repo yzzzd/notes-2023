@@ -5,10 +5,16 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.yazid.notes.databinding.ActivityHomeBinding
 import com.yazid.notes.ui.add.NoteAddActivity
 import com.yazid.notes.ui.detail.NoteDetailActivity
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
@@ -23,9 +29,7 @@ class HomeActivity : AppCompatActivity() {
 
         noteAdapter = NoteAdapter {
             val detailIntent = Intent(this, NoteDetailActivity::class.java).apply {
-                putExtra(NoteDetailActivity.TITLE, it.title)
-                putExtra(NoteDetailActivity.CONTENT, it.content)
-                putExtra(NoteDetailActivity.CREATED_AT, it.createdAt)
+                putExtra(NoteDetailActivity.ID, it.id)
             }
             startActivity(detailIntent)
         }
@@ -37,8 +41,6 @@ class HomeActivity : AppCompatActivity() {
         }
 
         observeData()
-
-        viewModel.getNote()
     }
 
     private fun observeData() {
@@ -46,5 +48,10 @@ class HomeActivity : AppCompatActivity() {
             noteAdapter.submitList(notes)
             binding.viewEmpty.isVisible = notes.isEmpty()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.getNote()
     }
 }

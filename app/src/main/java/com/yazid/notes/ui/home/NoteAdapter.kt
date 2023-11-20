@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.yazid.notes.databinding.ItemNoteBinding
-import com.yazid.notes.model.Note
+import com.yazid.notes.model.note.Note
 
 class NoteAdapter(private val onItemClick: (Note) -> Unit): ListAdapter<Note, NoteAdapter.NoteViewHolder>(NoteDiffCallBack()) {
 
@@ -25,7 +25,7 @@ class NoteAdapter(private val onItemClick: (Note) -> Unit): ListAdapter<Note, No
         fun bind(note: Note) {
             binding.tvTitle.text = note.title
             binding.tvContent.text = note.content
-            binding.tvDate.text = note.createdAt
+            binding.tvDate.text = note.createdAt.toString()
         }
     }
 
