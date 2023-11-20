@@ -8,5 +8,6 @@
     <string name="hint_title">Title</string>
     <string name="hint_content">Write your journey</string>
     <string name="btn_edit">Edit</string>
+    <string name="btn_delete">Delete</string>
     <string name="btn_save">Save</string>
 </resources>

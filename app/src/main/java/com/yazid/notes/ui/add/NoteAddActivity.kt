@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.yazid.notes.R
 import com.yazid.notes.databinding.ActivityNoteAddBinding
 import com.yazid.notes.model.note.Note
@@ -51,9 +52,11 @@ class NoteAddActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
-            R.id.action_save -> {
+    private fun saveConfirmation() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Save")
+            .setMessage("Dou you want to save this note?")
+            .setPositiveButton("Save") { dialog, _ ->
                 val inputTitle = binding.etTitle.text.toString().trim()
                 val inputContent = binding.etContent.text.toString().trim()
                 val note = Note(
@@ -68,6 +71,18 @@ class NoteAddActivity : AppCompatActivity() {
                     viewModel.updateNote(note)
                 }
                 finish()
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.action_save -> {
+                saveConfirmation()
                 true
             }
             else -> super.onOptionsItemSelected(item)

@@ -21,4 +21,10 @@ class NoteDetailViewModel @Inject constructor(private val noteDao: NoteDao): Vie
             _note.value = noteDao.getNoteById(id)
         }
     }
+
+    fun deleteNote(id: Int) {
+        viewModelScope.launch {
+            noteDao.deleteNoteById(id)
+        }
+    }
 }

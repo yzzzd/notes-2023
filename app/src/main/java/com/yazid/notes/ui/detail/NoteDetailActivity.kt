@@ -6,8 +6,10 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.yazid.notes.R
 import com.yazid.notes.databinding.ActivityNoteDetailBinding
+import com.yazid.notes.model.note.Note
 import com.yazid.notes.ui.add.NoteAddActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -47,6 +49,21 @@ class NoteDetailActivity : AppCompatActivity() {
         }
     }
 
+    private fun deleteConfirmation() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Delete")
+            .setMessage("Dou you want to delete this note?")
+            .setPositiveButton("Delete") { dialog, _ ->
+                viewModel.deleteNote(id)
+                finish()
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_detail, menu)
         return true
@@ -59,6 +76,10 @@ class NoteDetailActivity : AppCompatActivity() {
                     putExtra(NoteAddActivity.ID, id)
                 }
                 startActivity(addIntent)
+                true
+            }
+            R.id.action_delete -> {
+                deleteConfirmation()
                 true
             }
             else -> super.onOptionsItemSelected(item)
